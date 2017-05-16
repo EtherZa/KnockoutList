@@ -42,7 +42,7 @@
                 {
                     var collection = JsonConvert.DeserializeObject<string[]>(value).Select(HttpUtility.HtmlDecode);
 
-                    // TODO: server side validation heres
+                    // TODO: server side validation here
                     this.items.AddRange(collection);
                 }
             }

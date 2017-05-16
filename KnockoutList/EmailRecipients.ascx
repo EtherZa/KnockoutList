@@ -45,9 +45,11 @@
             var len = values.length;
 
             for (var i = 0; i < len; i++) {
-                var v = values[i] = values[i].trim();
-                if (!v
-                    .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i)) {
+                var v = values[i].trim();
+                var match = v.match(/^([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})$|^.*<([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})>$/i);
+                if (match != null) {
+                    values[i] = match[1] || match[2];
+                } else {
                     return {
                         values: null,
                         message: "* Invalid",
